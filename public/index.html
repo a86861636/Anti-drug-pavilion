@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>黄埔公安</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but i18n doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <!--rem适配-->
+  <script>
+    // 设置 rem 函数
+    function setRem() {
+      let baseSize = 13;
+      let width = document.body.offsetWidth;
+      if(width > 5000){
+        baseSize = 20;
+      }else if(width > 4000){
+        baseSize = 18;
+      }else if(width > 2000){
+        baseSize = 16;
+      };
+      // 当前页面宽度相对于 750 宽的缩放比例，可根据自己需要修改。
+      const scale = document.documentElement.clientWidth / 750;
+      // 设置页面根节点字体大小
+      document.documentElement.style.fontSize = baseSize * Math.min(scale, 2) + 'px';
+
+      if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {//判断移动端
+        document.body.classList.add(`wap`);
+      }
+    }
+    // 初始化
+    setRem();
+    // 改变窗口大小时重新设置 rem
+    window.addEventListener("resize",this.setRem);
+  </script>
+</html>
